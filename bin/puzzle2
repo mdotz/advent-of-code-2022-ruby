@@ -1,0 +1,11 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "aoc2022ruby"
+require "optparse"
+
+path = ARGV[0]
+raise StandardError, "You must provide a path as an argument" unless path
+
+Puzzle2::Runner.call(path: path)

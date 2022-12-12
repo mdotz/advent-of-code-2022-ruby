@@ -25,6 +25,10 @@ example:
 12345
 ```
 
+**Puzzle2:**
+
+Run `./bin/puzzle2 path_to_your_input_file`
+
 ## Development
 
 I used gem boilerplate for development, because I'm lazy.

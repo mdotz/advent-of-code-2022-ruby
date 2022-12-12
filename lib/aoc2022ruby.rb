@@ -7,6 +7,10 @@ require_relative "aoc2022ruby/puzzle1/bag"
 require_relative "aoc2022ruby/puzzle1/bags_calculator"
 require_relative "aoc2022ruby/puzzle1/runner"
 
+require_relative "aoc2022ruby/puzzle2/round"
+require_relative "aoc2022ruby/puzzle2/round_points_calculator"
+require_relative "aoc2022ruby/puzzle2/runner"
+
 module Aoc2022ruby
   class Error < StandardError; end
   # Your code goes here...

@@ -10,3 +10,4 @@
 # rspec failure tracking
 .rspec_status
 puzzle1input.txt
+puzzle2input.txt
