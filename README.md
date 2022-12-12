@@ -25,9 +25,13 @@ example:
 12345
 ```
 
-**Puzzle2:**
+**Puzzle2, Part1:**
 
-Run `./bin/puzzle2 path_to_your_input_file`
+Run `./bin/puzzle2part1 path_to_your_input_file`
+
+**Puzzle2, Part2:**
+
+Run `./bin/puzzle2part2 path_to_your_input_file`
 
 ## Development
 

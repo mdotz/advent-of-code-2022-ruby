@@ -10,6 +10,8 @@ require_relative "aoc2022ruby/puzzle1/runner"
 require_relative "aoc2022ruby/puzzle2/round"
 require_relative "aoc2022ruby/puzzle2/round_points_calculator"
 require_relative "aoc2022ruby/puzzle2/runner"
+require_relative "aoc2022ruby/puzzle2/part1/move_mapper"
+require_relative "aoc2022ruby/puzzle2/part2/move_mapper"
 
 module Aoc2022ruby
   class Error < StandardError; end

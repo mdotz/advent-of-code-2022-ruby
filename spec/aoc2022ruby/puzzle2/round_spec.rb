@@ -1,11 +1,10 @@
 # frozen_string_literal: true
 
 RSpec.describe Puzzle2::Round do
-  it "maps players' moves to signs" do
+  it "maps players' moves to shapes" do
     round = described_class.new(:A, :Z)
 
-    expect(round.player1_sign).to eq(:r)
-    expect(round.player2_sign).to eq(:s)
+    expect(round.player2_shape).to eq(:s)
   end
 
   context "when accessing player points" do
@@ -16,10 +15,8 @@ RSpec.describe Puzzle2::Round do
 
       expect(Puzzle2::RoundPointsCalculator).to receive(:new).with(round).and_return(calc_double)
 
-      expect(calc_double).to receive(:player1_points).and_return(1)
       expect(calc_double).to receive(:player2_points).and_return(2)
 
-      expect(round.player1_points).to eq(1)
       expect(round.player2_points).to eq(2)
     end
   end

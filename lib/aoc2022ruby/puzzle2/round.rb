@@ -6,29 +6,27 @@ module Puzzle2
   class Round
     extend Forwardable
 
-    SIGN_MAPPING = {
-      A: :r, B: :p, C: :s,
-      X: :r, Y: :p, Z: :s
-    }.freeze
+    PLAYER1_SHAPE_MAPPING = { A: :r, B: :p, C: :s }.freeze
 
     def_delegators :points_calculator, :player1_points, :player2_points
 
-    def initialize(player1_move, player2_move)
+    def initialize(player1_move, player2_move, move_mapper: Part1::MoveMapper)
       @player1_move = player1_move.to_sym
       @player2_move = player2_move.to_sym
+      @move_mapper = move_mapper
     end
 
-    def player1_sign
-      @player1_sign ||= SIGN_MAPPING[player1_move]
+    def player1_shape
+      @player1_shape ||= PLAYER1_SHAPE_MAPPING[player1_move]
     end
 
-    def player2_sign
-      @player2_sign ||= SIGN_MAPPING[player2_move]
+    def player2_shape
+      @player2_shape ||= move_mapper.call(player1_shape, player2_move)
     end
 
     private
 
-    attr_reader :player1_move, :player2_move
+    attr_reader :player1_move, :player2_move, :move_mapper
 
     def points_calculator
       @points_calculator ||= Puzzle2::RoundPointsCalculator.new(self)

@@ -12,24 +12,16 @@ module Puzzle2
     }.freeze
 
     def initialize(round)
-      @player1_sign = round.player1_sign
-      @player2_sign = round.player2_sign
-    end
-
-    def player1_points
-      points(player1_sign, player2_sign)
+      @player1_shape = round.player1_shape
+      @player2_shape = round.player2_shape
     end
 
     def player2_points
-      points(player2_sign, player1_sign)
+      POINTS_MAPPING[player2_shape] + RESULTS_MAPPING[player2_shape][player1_shape]
     end
 
     private
 
-    attr_reader :player1_sign, :player2_sign
-
-    def points(sign1, sign2)
-      POINTS_MAPPING[sign1] + RESULTS_MAPPING[sign1][sign2]
-    end
+    attr_reader :player1_shape, :player2_shape
   end
 end
