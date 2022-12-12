@@ -6,8 +6,10 @@ module Puzzle1
       @bags = bags
     end
 
-    def top_calories
-      bags.map(&:total_calories).max
+    def top_calories(number_of_top_bags = 1)
+      bags.map(&:total_calories)
+          .max(number_of_top_bags)
+          .sum
     end
 
     private

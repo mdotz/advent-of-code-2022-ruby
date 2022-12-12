@@ -1,0 +1,20 @@
+#!/usr/bin/env ruby
+# frozen_string_literal: true
+
+require "bundler/setup"
+require "aoc2022ruby"
+require "optparse"
+
+options = { number: 1 }
+OptionParser.new do |opts|
+  opts.on("-nNUMBER",
+          Integer,
+          "Number of top bags to sum, default=1") do |n|
+    options[:number] = n
+  end
+end.parse!
+
+path = ARGV[0]
+raise StandardError, "You must provide a path as an argument" unless path
+
+Puzzle1::Runner.call(path: path, top_bags: options[:number])

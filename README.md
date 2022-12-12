@@ -8,9 +8,20 @@ Install dependencies
 
 **Puzzle 1, Part 1:**
 
-Run `./bin/puzzle1part1 path_to_your_input_file`, example:
+Run `./bin/puzzle1part1 path_to_your_input_file`
+
+example:
 ```
 ➜ ./bin/puzzle1part1 puzzle1input.txt
+12345
+```
+
+**Puzzle1, Part 2:**
+
+Run the same as Part 1 with additional -n argument set to 3, for top 3 bags to sum
+example:
+```
+➜ ./bin/puzzle1part1 -n 3 puzzle1input.txt
 12345
 ```
 
