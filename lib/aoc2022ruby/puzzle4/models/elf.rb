@@ -3,6 +3,8 @@
 module Puzzle4
   module Models
     class Elf
+      attr_reader :sections_range
+
       def initialize(sections_range)
         @sections_range = sections_range
       end
@@ -14,10 +16,6 @@ module Puzzle4
       def last_section
         sections_range.last
       end
-
-      private
-
-      attr_reader :sections_range
     end
   end
 end
