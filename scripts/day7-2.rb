@@ -24,9 +24,13 @@ File.open(ARGV[0], "r").each do |line|
   end
 end
 
-def count_size(t, sum = 0)
-  sum += t.select { |k,v| v.is_a?(Hash) && v[:type] == :dir }.map { |k,v| count_size(v,sum) }.sum
-  t[:size] <= 100_000 ? sum += t[:size] : sum
+total_free = 70_000_000 - tree.first[1][:size]
+@space_needed = 30_000_000 - total_free
+
+def find_dirs_to_delete(t, del_candidates = [])
+  del_candidates << t[:size] if t.is_a?(Hash) && t[:type] == :dir && t[:size] >= @space_needed
+  t.select { |k,v| v.is_a?(Hash) && v[:type] == :dir }.map { |k,v| find_dirs_to_delete(v,del_candidates) }
+  del_candidates
 end
 
-puts count_size(tree.first[1])
+puts find_dirs_to_delete(tree.first[1]).min
