@@ -9,7 +9,7 @@
 
 # rspec failure tracking
 .rspec_status
-puzzle1input.txt
-puzzle2input.txt
-puzzle3input.txt
-puzzle4input.txt
+day1input.txt
+day2input.txt
+day3input.txt
+day4input.txt
