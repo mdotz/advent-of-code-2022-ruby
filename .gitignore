@@ -9,7 +9,4 @@
 
 # rspec failure tracking
 .rspec_status
-day1input.txt
-day2input.txt
-day3input.txt
-day4input.txt
+day[1-99]input.txt
