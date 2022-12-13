@@ -1,5 +1,7 @@
 AllCops:
   TargetRubyVersion: 3.0.4
+  Exclude:
+    - "scripts/*"
 
 Style/StringLiterals:
   Enabled: true

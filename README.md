@@ -6,12 +6,24 @@
 Install dependencies
 `bundle install`
 
-Each day can be run with command:
-Run `./bin/puzzleXpartN path_to_your_input_file`
-where X is day number and N is part number
+There are two approaches in this repo:
+1. Simple scripts - `scripts` directory
+2. OOP - `lib` directory
 
-Special cases:
-**Puzzle 1, Part 1:**
+**Running scripts:**
+`ruby scripts/dayX-Y.rb path_to_your_input_file`
+
+where `X` is day number and `Y` is part number
+
+**Running OOP code:**
+
+`./bin/puzzleXpartY path_to_your_input_file`
+
+where `X` is day number and `Y` is part number
+
+## Special cases:
+
+**OOP Puzzle 1, Part 1:**
 
 Run `./bin/puzzle1 path_to_your_input_file`
 
@@ -21,7 +33,7 @@ example:
 12345
 ```
 
-**Puzzle1, Part 2:**
+**OOP Puzzle1, Part 2:**
 
 Run the same as Part 1 with additional -n argument set to 3, for top 3 bags to sum
 example:
@@ -33,3 +45,4 @@ example:
 ## Development
 
 I used gem boilerplate for development, because I'm lazy.
+
