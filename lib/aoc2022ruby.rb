@@ -19,6 +19,12 @@ require_relative "aoc2022ruby/puzzle3/string_comparer"
 require_relative "aoc2022ruby/puzzle3/models/group"
 require_relative "aoc2022ruby/puzzle3/runner"
 
+require_relative "aoc2022ruby/puzzle4/models/pair"
+require_relative "aoc2022ruby/puzzle4/models/elf"
+require_relative "aoc2022ruby/puzzle4/models/line"
+require_relative "aoc2022ruby/puzzle4/runner"
+require_relative "aoc2022ruby/puzzle4/section_overlap_checker"
+
 module Aoc2022ruby
   class Error < StandardError; end
   # Your code goes here...
