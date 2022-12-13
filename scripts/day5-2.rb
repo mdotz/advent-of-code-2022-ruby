@@ -8,7 +8,7 @@ File.open(ARGV[0], "r").each_with_index do |line, i|
     line.split("").each_slice(4).each_with_index { |slice, j| arr[j] << slice[1] unless slice[1].strip.empty? }
   elsif i > 9
     c, f, t = /move ([0-9]+) from ([0-9]+) to ([0-9]+)/.match(line).captures
-    arr[t.to_i - 1].unshift(*arr[f.to_i - 1].shift(c.to_i).reverse)
+    arr[t.to_i - 1].unshift(*arr[f.to_i - 1].shift(c.to_i))
   end
 end
 
