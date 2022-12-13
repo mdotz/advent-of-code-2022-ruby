@@ -4,8 +4,8 @@
 res = 1
 
 File.open(ARGV[0], "r").each do |line|
-  line.split("").each_cons(4) do |e|
-    if e.uniq.size == 4
+  line.split("").each_cons(14) do |e|
+    if e.uniq.size == 14
       break
     else
       res +=1
@@ -13,4 +13,4 @@ File.open(ARGV[0], "r").each do |line|
   end
 end
 
-puts res + 3
+puts res + 13
