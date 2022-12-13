@@ -13,6 +13,11 @@ require_relative "aoc2022ruby/puzzle2/runner"
 require_relative "aoc2022ruby/puzzle2/part1/move_mapper"
 require_relative "aoc2022ruby/puzzle2/part2/move_mapper"
 
+require_relative "aoc2022ruby/puzzle3/rucksack"
+require_relative "aoc2022ruby/puzzle3/value_map"
+require_relative "aoc2022ruby/puzzle3/compartment_searcher"
+require_relative "aoc2022ruby/puzzle3/runner"
+
 module Aoc2022ruby
   class Error < StandardError; end
   # Your code goes here...

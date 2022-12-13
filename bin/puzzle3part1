@@ -7,4 +7,4 @@ require "aoc2022ruby"
 path = ARGV[0]
 raise StandardError, "You must provide a path as an argument" unless path
 
-Puzzle2::Runner.call(path: path)
+Puzzle3::Runner.call(path: path)
