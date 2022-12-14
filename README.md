@@ -11,34 +11,35 @@ There are two approaches in this repo:
 2. OOP - `lib` directory
 
 **Running scripts:**
+
 `ruby scripts/dayX-Y.rb path_to_your_input_file`
 
 where `X` is day number and `Y` is part number
 
 **Running OOP code:**
 
-`./bin/puzzleXpartY path_to_your_input_file`
+`./bin/dayXpartY path_to_your_input_file`
 
 where `X` is day number and `Y` is part number
 
 ## Special cases:
 
-**OOP Puzzle 1, Part 1:**
+**OOP Day 1, Part 1:**
 
-Run `./bin/puzzle1 path_to_your_input_file`
+Run `./bin/day1 path_to_your_input_file`
 
 example:
 ```
-➜ ./bin/puzzle1 puzzle1input.txt
+➜ ./bin/day1 day1input.txt
 12345
 ```
 
-**OOP Puzzle1, Part 2:**
+**OOP Day1, Part 2:**
 
 Run the same as Part 1 with additional -n argument set to 3, for top 3 bags to sum
 example:
 ```
-➜ ./bin/puzzle1 -n 3 puzzle1input.txt
+➜ ./bin/day1 -n 3 day1input.txt
 12345
 ```
 
