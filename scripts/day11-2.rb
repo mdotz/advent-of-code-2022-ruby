@@ -5,7 +5,7 @@ require "ostruct"
 buf = []
 monkeys = []
 
-File.open(ARGV[0], "r").each_with_index do |line, index|
+File.open(ARGV[0], "r").each do |line|
   if /If false/.match?(line)
     num = /Monkey (\d+)/.match(buf[0]).captures.first.to_i
     items = /Starting items:((:? \d+,?)+)/.match(buf[1]).captures.first.split(",").map(&:to_i)
