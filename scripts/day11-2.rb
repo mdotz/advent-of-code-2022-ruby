@@ -22,21 +22,23 @@ File.open(ARGV[0], "r").each_with_index do |line, index|
   end
 end
 
-20.times do
+divisibilities = monkeys.map { _1.test_value }
+monkeys.each { |m| m.items.map! { |i| divisibilities.map { [_1, i % _1] }.to_h } }
+
+10_000.times do
   monkeys.each do |monkey|
     monkey.items.each do |item|
-      monkey.operation_value == "old" ? value = item : value = monkey.operation_value.to_i
-      item = item.send(monkey.operator.to_sym, value.to_i) / 3
-
-      if item % monkey.test_value == 0
-        monkeys[monkey.res_true].items << item
+      if monkey.operation_value == "old"
+        item = item.map { |d,v| [d, v**2 % d] }.to_h
       else
-        monkeys[monkey.res_false].items << item
+        item = item.map { |d,v| [d, v.send(monkey.operator.to_sym, monkey.operation_value.to_i) % d] }.to_h
       end
 
-      monkey.items = []
+      item[monkey.test_value] == 0 ? monkeys[monkey.res_true].items << item : monkeys[monkey.res_false].items << item
+
       monkey.items_inspected += 1
     end
+    monkey.items = []
   end
 end
 
