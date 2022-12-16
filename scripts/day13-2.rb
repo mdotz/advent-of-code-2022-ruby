@@ -14,18 +14,18 @@ def compare_packets(i1, i2)
     compare_packets(i1, [i2])
   else
     # Array conditions
-    return 1 if i1.nil?
-    return -1 if i2.nil?
+    return -1 if i1.nil?
+    return 1 if i2.nil?
 
     # Integer conditions
-    return 1 if i1 < i2
+    return -1 if i1 < i2
     return nil if i1 == i2
 
-    -1
+    1
   end
 end
 
 packets = File.open(ARGV[0]).readlines(chomp: true).reject(&:empty?).map { eval _1 }.push(*[[[2]], [[6]]])
 
-sorted_packets = packets.sort { |p1, p2| compare_packets(p1,p2) }.reverse
+sorted_packets = packets.sort { |p1, p2| compare_packets(p1,p2) }
 puts (sorted_packets.index([[2]]) + 1) * (sorted_packets.index([[6]]) + 1)
