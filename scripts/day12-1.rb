@@ -1,47 +1,35 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
 
-Node = Struct.new(:x, :y, :height, :distance, :source, :visited, keyword_init: true)
+letter_map = File.open(ARGV[0], "r").inject([]) { |arr, line| arr << line.strip.split("") }
+visit_map = Array.new(letter_map.size) { Array.new(letter_map[0].size) { false } }
+steps_map = Array.new(letter_map.size) { Array.new(letter_map[0].size) { Float::INFINITY } }
+height_map = letter_map.map { |row| row.map { _1.ord } }
 
-height_map = File.open(ARGV[0], "r").inject([]) { |arr, line| arr << line.strip.split("") }
-nodes = []
+start_y = letter_map.find_index { _1.include?("S") }
+start_x = letter_map[start_y].index("S")
+end_y = letter_map.find_index { _1.include?("E") }
+end_x = letter_map[end_y].index("E")
+height_map[start_y][start_x] = "a".ord
+height_map[end_y][end_x] = "z".ord
 
-height_map.each_with_index do |row, y|
-  row.each_with_index do |e, x|
-    nodes << Node.new(x: x, y: y, height: e.ord, distance: Float::INFINITY, source: nil, visited: false)
-  end
-end
+steps_map[start_y][start_x] = 0
+queue = [[start_x, start_y]]
 
-start_node = nodes.find { _1.height == "S".ord }
-start_node.distance = 0
-start_node.height = "a".ord
+while queue.size > 0
+  x, y = queue.shift
+  next if visit_map[y][x]
 
-end_node = nodes.find { _1.height == "E".ord  }
-end_node.height = "z".ord
+  step = steps_map[y][x]
+  break puts(step) if x == end_x && y == end_y
 
-nodes_to_visit = [start_node]
+  neighbours = [[x - 1, y], [x + 1, y], [x, y - 1], [x, y + 1]].map do |nx, ny|
+    next if nx < 0 || nx >= height_map[0].size || ny < 0 || ny >= height_map.size
+    next if height_map[ny][nx] > height_map[y][x] + 1
 
-# slow as hecc
-while nodes_to_visit.size > 0
-  node = nodes_to_visit[0]
-  nodes_to_visit.delete(node)
-
-  neighbours = [
-    nodes.find { _1.x == node.x - 1 && _1.y == node.y },
-    nodes.find { _1.x == node.x + 1 && _1.y == node.y },
-    nodes.find { _1.x == node.x && _1.y == node.y - 1 },
-    nodes.find { _1.x == node.x && _1.y == node.y + 1 }
-  ].compact.select { _1.height - 1 <= node.height && _1 != node.source }
-
-  neighbours.each do |neighbour|
-    if neighbour.distance > node.distance + 1
-      neighbour.distance = node.distance + 1
-      neighbour.source = node
-    end
-    nodes_to_visit << neighbour unless neighbour.visited
+    steps_map[ny][nx] = step + 1 if steps_map[ny][nx] > step + 1
+    queue << [nx, ny]
   end
 
-  node.visited = true
+  visit_map[y][x] = true
 end
-
-puts end_node.distance
