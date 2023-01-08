@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+require 'set'
 
 def segments_intersection(a, b, c, d)
   abc = ((d.x - c.x) * (a.y - c.y)) - ((d.y - c.y) * (a.x - c.x))
@@ -50,17 +51,15 @@ File.open(ARGV[0], "r").each do |line|
   squares << Square.new(left, top, right, bottom)
 end
 
-intersections = right_slope_lines.each_with_object([]) do |r_line, arr|
+intersections = right_slope_lines.each_with_object(Set.new) do |r_line, set|
   left_slope_lines.each do |l_line|
     intersection_point = segments_intersection(r_line.point1, r_line.point2, l_line.point1, l_line.point2)
     points = [r_line.point1, r_line.point2, l_line.point1, l_line.point2]
-    if intersection_point && points.all? { _1 != intersection_point }
-      arr << intersection_point
-    end
+    set.add(intersection_point) if intersection_point
   end
 end
 
-intersections.uniq.each_with_object([]) do |point, arr|
+intersections.each_with_object([]) do |point, arr|
   if intersections.include?(Point.new(point.x + 1, point.y + 1)) &&
       intersections.include?(Point.new(point.x + 2, point.y)) &&
       intersections.include?(Point.new(point.x + 1, point.y - 1))
